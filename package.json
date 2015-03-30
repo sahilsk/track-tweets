@@ -1,0 +1,23 @@
+{
+  "name": "trackTweets",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js",
+    "postInstall": "browserify client"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "~4.12.3",
+    "react": "~0.13.1",
+    "config": "~1.12.0",
+    "browserify": "~9.0.3",
+    "hbs": "~3.0.1",
+    "mongoose": "~4.0.1",
+    "node-tweet-stream": "~1.6.0",
+    "socket.io": "~1.3.5"
+  }
+}
