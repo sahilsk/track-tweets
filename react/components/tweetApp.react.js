@@ -5,6 +5,7 @@ var
 	, Tweets = require('./tweets.react')
 	, Notification = require('./notification.react')
 	, Loader = require('./loader.react')
+	, Tracker = require('./tracker.react')
 	, http = require('http')
 	;
 
@@ -13,6 +14,7 @@ var TweetApp = React.createClass({
 	getInitialState : function(props){
 		var props = props  || this.props;
 		return {
+			track: "reactjs",
 			tweets: props.tweets,
 			unreadTweets : { tweets : [], count: 0 },
 			done: false ,
@@ -40,19 +42,6 @@ var TweetApp = React.createClass({
 
   		window.addEventListener("scroll", self.checkScroll );
 	},
-	componentWillUpdate: function() {
-	  var node = this.getDOMNode();
-	  this.scrollHeight = node.scrollHeight;
-	  this.scrollTop = node.scrollTop;
-	  console.log("will udpate scrolling...", this.scrollTop );
-	},
-	 
-	componentDidUpdate: function() {
-	  var node = this.getDOMNode();
-	  node.scrollTop = this.scrollTop + (node.scrollHeight - this.scrollHeight);
-	  console.log("updating scrolling...", node.scrollTop );
-	},
-
 	addTweet : function(tweet){
 		var unreadTweets = 	JSON.parse( JSON.stringify( this.state.unreadTweets) );
 		unreadTweets.count++;
@@ -80,7 +69,6 @@ var TweetApp = React.createClass({
 	},
 
 	checkScroll : function(ev){
-		console.log("Scrolled event triggered ");
 		var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 	    var s = document.body.scrollTop;
 	    var scrolled = (h + s) > document.body.offsetHeight;
@@ -126,12 +114,21 @@ var TweetApp = React.createClass({
 	
 		})
 
-	}
-	,
+	},
+	handleChange: function(event) {
+		var self = this;
+		var socket = io.connect('/');
+		this.setState({track: event.target.value}, function(){
+			console.log("emiting change event: ", self.state.track);
+			socket.emit('track', {track: self.state.track} );	
+		});
+			
+	},
 	render: function(){
 
 		return (
 			<div className="tweetApp_wrapper"  >
+				<Tracker track={this.state.track} handleChange={this.handleChange}  />
 				<Tweets tweets={this.state.tweets}   />
 				<Notification count={this.state.unreadTweets.count}
 					showUnreadTweets={this.showUnreadTweets}

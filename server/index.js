@@ -7,6 +7,7 @@ var
   , mongoose = require('mongoose')
   , Socket_IO = require('socket.io')
   , Twitter = require('node-tweet-stream')
+  , nTwitter = require('ntwitter')
   , tweetStream = require("./utils/tweetStream")
   , path = require("path")
   , morgan = require('morgan')
@@ -28,27 +29,6 @@ app.disable('etag');
 app.use(express.static( path.join(__dirname, '../server/public') ));
 app.use(morgan('combined'));
 
-/*
-var blocks = {};
-
-hbs.registerHelper('extend', function(name, context) {
-    var block = blocks[name];
-    if (!block) {
-        block = blocks[name] = [];
-    }
-
-    block.push(context.fn(this)); // for older versions of handlebars, use block.push(context(this));
-});
-
-hbs.registerHelper('block', function(name) {
-    var val = (blocks[name] || []).join('\n');
-
-    // clear the block
-    blocks[name] = [];
-    return val;
-});
-
-*/
 app.get('/',routes.index);
 app.get('/page/:page/:skip',routes.page);
 
@@ -71,11 +51,12 @@ io.on('connection', function(socket){
   	console.log("Event triggered", data);
   });
   socket.on('disconnect', function(){
-  	console.log("socketio disconnected");
+  	console.log("Client disconnected");
   });
 });
  
 mongoose.connect( process.env['MONGOLAB_URI'] || "mongodb://localhost/track_tweets" );
 
 // Start twitter streaming 
-tweetStream( new Twitter(config.twitter), io );
+tweetStream( new nTwitter(config.ntwitter), io );
+//tweetStream( new Twitter(config.twitter), io );

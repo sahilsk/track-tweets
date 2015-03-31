@@ -29,6 +29,20 @@ body{
   border-radius: 5px;
 }
 
+.tweet .name{
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.tweet .screen_name{
+  color: #8899a6;
+  font-style: italic;
+}
+
+.tweet .created_at {
+  color: #8899a6;
+}
+
 .avatar {
   border-radius: 60px;
   border: 1px solid #FFF;
@@ -61,6 +75,24 @@ body{
   padding: 10px;
 }
 
+.tracker {
+  text-align: center;
+  margin: 0 auto;
+  padding: 5px;
+  background-color: #E5E5E5;
+  width: 50%;
+  border-radius: 5px;
+}
+
+.tracker input {
+  width: 90%;
+  border: 1px solid #ececec;
+  font-size: 23px;
+  color: #9E80BE;
+  font-family: fantasy;
+  border-radius: 10px;
+  padding: 1%;
+}
 
 
 .loader {
