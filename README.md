@@ -13,6 +13,10 @@ Instructions
 	- enter your twitter credentials
 	- enter mongodb connection string inside `server/index.js` file
 
+- If required, brwoserify to create bundle.js
+
+		npm run browserify
+
 - Launch your application
 
 		npm start

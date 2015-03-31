@@ -1,3 +1,4 @@
+/** @jsx React.DOM */
 var React = require('react');
 
 var Tweet = React.createClass({
@@ -5,7 +6,7 @@ var Tweet = React.createClass({
 
 		return (
 			<li className="tweet">
-				{this.props.tweet.message}
+				{this.props.tweet.text}
 			</li>
 		)
 	}

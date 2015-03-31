@@ -1,6 +1,7 @@
-var app = require('express');
+var JSX = require('node-jsx').install();
 var React = require("react");
 var Tweet = require('../models/tweet');
+var TweetApp = require('../../react/components/tweetApp.react');
 
 module.exports = {
 
@@ -11,9 +12,14 @@ module.exports = {
 				res.statusCode(404);
 				res.send("Error querying database");
 			}
-			if(!err){
-				res.render("index",  { layout: 'layouts/layout',  "tweets": tweets } );
-			}	
+
+			var markup = React.renderComponentToString( TweetApp( {"tweets": tweets } ) );
+			res.render("index",  
+				{ "layout": '../../server/views/layouts/main', 
+				  "tweets": JSON.stringify(tweets), 
+				 "markup": markup  
+				 } );
+
 		});
 		
 	}

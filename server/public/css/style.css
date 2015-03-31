@@ -1,0 +1,11 @@
+body{
+	background-color: #efefef;
+}
+
+.notification {
+	display: none;
+}
+
+.notification.active{
+	display:normal;
+}

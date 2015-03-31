@@ -1,6 +1,12 @@
-var TweetApp = require("../react/components/TweetApp")
+/** @jsx React.DOM */
 
-React.render(
-  <TweetApp />,
+var React = require("react");
+var TweetApp = require("../react/components/tweetApp.react")
+
+var initialState = JSON.parse(document.getElementById('initial-state').innerHTML);
+
+
+React.renderComponent(
+  <TweetApp tweets={initialState} />,
   document.getElementById('tweet_app')
 );

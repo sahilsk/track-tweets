@@ -1,24 +1,27 @@
-var mongoose = require('mongoose');
+var 
+  mongoose = require('mongoose')
   , Schema = mongoose.Schema
   , ObjectId = Schema.ObjectId;
  
-var Tweet = new Schema({
+var TweetSchema = new Schema({
     author    : ObjectId
   , title     : String
-  , body      : String
-  , date      : Date
+  , text      : String
+  , created_at      : Date
+  , user: {name: String, screen_name: String, location: String, profile_image_url: String}
 });
 
 /**
 * per page = 20
 * offset: page number
 */
-var Tweet.statics.getTweets = function( page, offset, cb	){
-	var page = page || 0;
-	var offset = offset || 0;
-	var q = Tweet.find().sort({'date' :1}).limit( offset);
+TweetSchema.statics.getTweets = function( page, skip, cb	){
+  var per_page = 10;
+  var offset = (page * per_page) + (skip * 1);
+
+	var q = Tweet.find({},{ "__v": 0, user: 0}).sort({'created_at' :1}).skip(offset).limit( per_page);
 	q.exec( cb);
 
 }
 
-module.exports = Tweet;
+module.exports = Tweet = mongoose.model('Tweet', TweetSchema);

@@ -1,7 +1,7 @@
 var  io = require('socket.io')();
 var Tweet = require('../models/tweet');
 
-module.exports = function( twClient, socket ){
+module.exports = function( twClient ){
 
 
 	twClient.on('tweet', function(tweet){
@@ -26,13 +26,7 @@ module.exports = function( twClient, socket ){
 	  console.log('Oh no')
 	})
 	 
-	twClient.track('nodejs')
-	twClient.track('pizza')
-	 
-	// 5 minutes later
-	twClient.track('tacos')
-	 
-	// 10 minutes later
-	twClient.untrack('pizza')
+	twClient.track('pizza');
+
 
 }

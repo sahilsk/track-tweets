@@ -1,23 +1,32 @@
 var 
 	express = require('express')
+  , exphbs  = require('express-handlebars')
   , app = express()
   , config = require('config')
   , routes = require('./routes/index')
-  , hbs = require('hbs')
-  , mongoose = require('mongoose');
+  , mongoose = require('mongoose')
   , Socket_IO = require('socket.io')
-  , Twitter = require('node-tweet-stream'),
+  , Twitter = require('node-tweet-stream')
   , tweetStream = require("./utils/tweetStream")
+  , path = require("path")
   ;
 
+//require('node-jsx').install();
+
 // Set view path
-app.set('views', './server/views');
+app.set('views', path.join(__dirname , '../server/views'));
 //Set templating engine to handlebars
-app.set('view engine', 'hbs');
+//app.set('view engine', 'hbs');
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+// Disable etag headers on responses
+app.disable('etag');
+
 //Server static files
-app.use(express.static('public'));
+app.use(express.static( path.join(__dirname, '../server/public') ));
 
-
+/*
 var blocks = {};
 
 hbs.registerHelper('extend', function(name, context) {
@@ -37,6 +46,7 @@ hbs.registerHelper('block', function(name) {
     return val;
 });
 
+*/
 app.get('/',routes.index);
 
 var port = process.env["PORT"] || config.port;
@@ -64,5 +74,5 @@ io.on('connection', function(socket){
  
 mongoose.connect('mongodb://localhost/track_tweets');
 
-// 
+// Start twitter streaming 
 tweetStream( new Twitter(config.twitter) );
