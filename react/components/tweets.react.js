@@ -7,7 +7,7 @@ var Tweets = React.createClass({
 	render: function(){
 		var tweetNodes = this.props.tweets.map( function(tweet) {
 					return (
-						<Tweet tweet={tweet} />
+						<Tweet key={tweet['_id']} tweet={tweet} />
 						)
 			});
 		return (

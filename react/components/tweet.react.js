@@ -6,7 +6,13 @@ var Tweet = React.createClass({
 
 		return (
 			<li className="tweet">
-				{this.props.tweet.text}
+				<div className="avatar">
+					<img src={this.props.tweet.user.profile_image_url} />
+				</div>
+				<div className="message">
+					{this.props.tweet.text}
+				</div>
+				<div className="clear"/>
 			</li>
 		)
 	}

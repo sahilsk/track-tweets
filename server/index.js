@@ -9,6 +9,7 @@ var
   , Twitter = require('node-tweet-stream')
   , tweetStream = require("./utils/tweetStream")
   , path = require("path")
+  , morgan = require('morgan')
   ;
 
 //require('node-jsx').install();
@@ -25,6 +26,7 @@ app.disable('etag');
 
 //Server static files
 app.use(express.static( path.join(__dirname, '../server/public') ));
+app.use(morgan('combined'));
 
 /*
 var blocks = {};
@@ -48,6 +50,7 @@ hbs.registerHelper('block', function(name) {
 
 */
 app.get('/',routes.index);
+app.get('/page/:page/:skip',routes.page);
 
 var port = process.env["PORT"] || config.port;
 var host = config.bind_host || "127.0.0.1";
@@ -75,4 +78,4 @@ io.on('connection', function(socket){
 mongoose.connect('mongodb://localhost/track_tweets');
 
 // Start twitter streaming 
-tweetStream( new Twitter(config.twitter) );
+tweetStream( new Twitter(config.twitter), io );

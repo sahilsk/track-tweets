@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
     "browserify": "browserify client/app.js -o server/public/js/bundle.js",
-    "postInstall": "browserify client/app.js -o server/public/js/bundle.js"
+    "postinstall": "browserify client/app.js -o server/public/js/bundle.js"
   },
   "author": "",
   "license": "ISC",
@@ -24,7 +24,8 @@
     "react": "~0.12.2",
     "reactify": "~0.14.0",
     "socket.io": "~1.3.5",
-    "socket.io-client": "^1.3.5"
+    "socket.io-client": "^1.3.5",
+    "morgan": "~1.5.2"
   },
   "browserify": {
     "transform": [

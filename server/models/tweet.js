@@ -4,7 +4,8 @@ var
   , ObjectId = Schema.ObjectId;
  
 var TweetSchema = new Schema({
-    author    : ObjectId
+    _id    : ObjectId
+  ,  id    : Number
   , title     : String
   , text      : String
   , created_at      : Date
@@ -19,7 +20,7 @@ TweetSchema.statics.getTweets = function( page, skip, cb	){
   var per_page = 10;
   var offset = (page * per_page) + (skip * 1);
 
-	var q = Tweet.find({},{ "__v": 0, user: 0}).sort({'created_at' :1}).skip(offset).limit( per_page);
+	var q = Tweet.find().skip(offset).limit( per_page).sort({'created_at' : -1});
 	q.exec( cb);
 
 }

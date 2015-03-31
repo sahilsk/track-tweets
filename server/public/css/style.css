@@ -1,11 +1,75 @@
 body{
-	background-color: #efefef;
+	background-color: #584766;
 }
 
-.notification {
+.tweetApp_wrapper {
+	margin-top:50px;
+}
+
+.clear {
+	float:none;
+	clear:both;
+}
+.tweets {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.tweet {
+  background-color: #FFF;
+  margin: 20px;
+  list-style: none;
+  padding: 10px;
+  border: 5px;
+  width: 100%;
+  box-shadow: 2px 2px 5px;
+  position: relative;
+  display: block;
+  border: 5px solid #F0F0F0;
+  border-radius: 5px;
+}
+
+.avatar {
+  border-radius: 60px;
+  border: 1px solid #FFF;
+  width: 50px;
+  overflow: hidden;
+  background-color: #FFF;
+  float: left;
+}
+
+.message {
+  margin-left: 60px;
+  padding: 5px;
+}
+
+.notification-bar {
 	display: none;
+	transition: opacity 1s ease-out;
+  opacity: 0; 
+  position: fixed;
 }
 
-.notification.active{
-	display:normal;
+.notification-bar.active{
+  display: block;
+  top: 0;
+  width: 100%;
+  background-color: rgb(255, 216, 16);
+  opacity: 0.5;
+  text-align: center;
+  transition: all 2s;
+  padding: 10px;
 }
+
+
+
+.loader {
+  display: none;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.loader.active {
+  display: block;
+  padding: 5px;
+};
