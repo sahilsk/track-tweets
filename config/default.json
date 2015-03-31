@@ -1,7 +1,7 @@
 {
 	"bind_host": "0.0.0.0",
 	"port" : 80,
-	"trac" : "reactjs",
+	"track" : "reactjs",
 	"twitter" : {
 	    "consumer_key" : "g9xpOwRQvn1Yy5c2cOip28V2B",
 	    "consumer_secret": "hTP1CpviMHEJcdXpWUC8s44qHjOCAuqkpcZBKm3qtGb7Uo2GTi",

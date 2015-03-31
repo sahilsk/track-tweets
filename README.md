@@ -1,7 +1,10 @@
-> NOTE: Work in progress
-
-Instructions
+Track-Tweets
 -----------
+
+Isomorphic Real-time twitter tweet tracking application, made possible using socket.io, node.js, facebook react and browserify.
+
+How-to
+--------------
 		
 
 - Install dependencies
@@ -11,9 +14,10 @@ Instructions
 - Edit configuration file inside `config` folder
 	
 	- enter your twitter credentials
-	- enter mongodb connection string inside `server/index.js` file
+	- enter mongodb connection string 
+	- add track string to track
 
-- If required, brwoserify to create bundle.js
+- browserify to create bundle.js
 
 		npm run browserify
 
