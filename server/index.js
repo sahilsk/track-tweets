@@ -53,10 +53,13 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
   	console.log("Client disconnected");
   });
+
+ socket.emit("track", { track: (config.track|| "reactjs") } );
+
 });
  
-mongoose.connect( process.env['MONGOLAB_URI'] || "mongodb://localhost/track_tweets" );
+mongoose.connect( process.env['MONGOLAB_URI'] || config.mongodb_uri);
 
 // Start twitter streaming 
-tweetStream( new nTwitter(config.ntwitter), io );
-//tweetStream( new Twitter(config.twitter), io );
+//tweetStream( new nTwitter(config.ntwitter), io );
+tweetStream( new Twitter(config.twitter), io );

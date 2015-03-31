@@ -1,5 +1,7 @@
 body{
 	background-color: #584766;
+	margin: 0px;
+	padding: 0px;
 }
 
 .tweetApp_wrapper {
@@ -11,17 +13,16 @@ body{
 	clear:both;
 }
 .tweets {
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
 }
 
 .tweet {
   background-color: #FFF;
-  margin: 20px;
+  margin: 5% 0;
   list-style: none;
-  padding: 10px;
-  border: 5px;
-  width: 100%;
+  padding: 2%;
+  width: 90%;
   box-shadow: 2px 2px 5px;
   position: relative;
   display: block;
@@ -76,22 +77,22 @@ body{
 }
 
 .tracker {
-  text-align: center;
-  margin: 0 auto;
   padding: 5px;
   background-color: #E5E5E5;
-  width: 50%;
-  border-radius: 5px;
+  width: 100%;
 }
 
-.tracker input {
+.tracker .trackName {
   width: 90%;
-  border: 1px solid #ececec;
+  border: 1px solid #DCDCDC;
   font-size: 23px;
-  color: #9E80BE;
+  color: #C5C5C5;
   font-family: fantasy;
   border-radius: 10px;
   padding: 1%;
+  background-color: #FFFFFF;
+  text-align: center;
+  margin: 0 auto;
 }
 
 

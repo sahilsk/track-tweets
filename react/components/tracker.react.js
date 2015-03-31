@@ -6,9 +6,9 @@ var Tracker = React.createClass({
 
 	render: function(){
 		return(
-			<div className="tracker">
-		 		<input type="text" defaultValue={this.props.track} onBlur={this.props.handleChange} placeholder="string to track" />
-		 	</div>
+			<section className="tracker">
+				<div className="trackName"> Tracking: {this.props.track} </div>
+		 	</section>
 		 );
 	}
 });

@@ -8,7 +8,7 @@ var Notification = React.createClass({
 		return (
 			<div className={ this.props.count > 0 ? "notification-bar active" : "notification-bar" } >
 				New Tweets arrived.( {this.props.count} unread tweets !!).
-				Click <a onClick={this.props.showUnreadTweets} > here </a> to see them;
+				Click <a href="javascript:void(0);" onClick={this.props.showUnreadTweets} > here </a> to see them;
 			</div>
 		)
 	}
