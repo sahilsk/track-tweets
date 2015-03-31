@@ -75,7 +75,7 @@ io.on('connection', function(socket){
   });
 });
  
-mongoose.connect('mongodb://localhost/track_tweets');
+mongoose.connect( process.env['MONGOLAB_URI'] || "mongodb://localhost/track_tweets" );
 
 // Start twitter streaming 
 tweetStream( new Twitter(config.twitter), io );
