@@ -28193,7 +28193,7 @@ var TweetApp = React.createClass({displayName: 'TweetApp',
   		});
 
   		socket.on("track", function(data){
-  			console.log("Tracking ", data);
+  			console.log("Tracking: ", data.track);
   			self.setState({ track: data.track });
   		});
 
@@ -28218,7 +28218,7 @@ var TweetApp = React.createClass({displayName: 'TweetApp',
 
 	checkScroll : function(ev){
 		var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-	    var s = document.body.scrollTop;
+	    var s = Math.max( document.body.scrollTop || document.documentElement.scrollTop );
 	    var scrolled = (h + s) > document.body.offsetHeight;
 
 	    if( scrolled && !this.state.done ){
